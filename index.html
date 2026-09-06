@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4b900" />
+    <meta name="description" content="Nobody Poops — a very serious publication about a very unserious lie." />
+    <meta property="og:title" content="Nobody Poops® — A Private Matter" />
+    <meta property="og:description" content="A very serious publication about a very unserious lie." />
+    <meta property="og:image" content="assets/nobody-poops-hero.png" />
+    <title>Nobody Poops® — A Private Matter</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Nobody Poops, back to top">NP<span>®</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span><i></i><i></i>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#manifesto">The lie</a>
+        <a href="#field-notes">Field notes</a>
+        <a href="#confessional">Confessional</a>
+        <a href="#membership">Join privately</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="assets/nobody-poops-hero.png" alt="A sunny yellow tiled powder room with a white toilet, tropical plant, and disco ball" />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <p class="eyebrow">Est. behind a locked door · 2026</p>
+        <h1 id="hero-title"><span>Nobody</span><span>Poops.</span></h1>
+        <p class="hero-note">A very serious publication<br />about a very unserious lie.</p>
+        <a class="round-link" href="#manifesto" aria-label="Enter the site"><span>Enter<br />privately</span><b>↘</b></a>
+        <p class="issue">Issue № 001<br />The Porcelain Edition</p>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div>
+          <span>Everybody does it</span><i>✦</i><span>Nobody admits it</span><i>✦</i><span>Please knock</span><i>✦</i>
+          <span>Everybody does it</span><i>✦</i><span>Nobody admits it</span><i>✦</i><span>Please knock</span><i>✦</i>
+        </div>
+      </div>
+
+      <section id="manifesto" class="manifesto dark-section">
+        <div class="section-label reveal"><span>01</span> The uncomfortable truth</div>
+        <p class="statement reveal">We all disappear<br />for <em>“a minute.”</em></p>
+        <div class="manifesto-grid">
+          <p class="big-copy reveal">There is no productivity hack. No five-step morning ritual. Sometimes the bravest thing you can do is lock the door, put your phone on airplane mode, and take the time you need.</p>
+          <div class="fine-print reveal">
+            <p>Nobody Poops is an independent celebration of privacy, honesty, and the small tiled rooms where our best ideas arrive uninvited.</p>
+            <p>We make field notes for overthinkers, nervous guests, first dates, open-plan offices, and anyone who has ever turned on a faucet for acoustic camouflage.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="field-notes" class="field-notes">
+        <div class="section-label reveal"><span>02</span> Field notes</div>
+        <div class="section-intro reveal">
+          <h2>Know before<br />you <em>go.</em></h2>
+          <p>Unsolicited research from the world’s least qualified bathroom correspondents.</p>
+        </div>
+
+        <div class="note-grid">
+          <article class="note-card reveal">
+            <p class="card-number">01 / SOUND</p>
+            <div class="card-icon sound-icon" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>The courtesy flush</h3>
+            <p>A classic. Wasteful? Maybe. Effective? We’re not here to judge.</p>
+          </article>
+          <article class="note-card coral reveal">
+            <p class="card-number">02 / TIMING</p>
+            <div class="card-icon clock-icon" aria-hidden="true"><span></span></div>
+            <h3>The 11-minute rule</h3>
+            <p>Short enough to avoid a search party. Long enough to finish the article.</p>
+          </article>
+          <article class="note-card blue reveal">
+            <p class="card-number">03 / EXIT</p>
+            <div class="card-icon exit-icon" aria-hidden="true">↗</div>
+            <h3>Leave no trace</h3>
+            <p>Fan on. Seat down. Alibi ready. Re-enter society with quiet confidence.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="numbers dark-section" aria-label="Vital statistics">
+        <div class="section-label reveal"><span>03</span> By the numbers</div>
+        <div class="number-row reveal">
+          <strong data-count="100">0</strong><sup>%</sup>
+          <p>of people do it.<br /><span>Our lawyers insisted on “approximately.”</span></p>
+        </div>
+        <div class="number-row reveal">
+          <strong data-count="0">0</strong><sup>%</sup>
+          <p>want to discuss it<br /><span>before the appetizers arrive.</span></p>
+        </div>
+      </section>
+
+      <section id="confessional" class="confessional">
+        <div class="section-label reveal"><span>04</span> The anonymous confessional</div>
+        <div class="confession-wrap reveal">
+          <p class="confession-mark">“</p>
+          <blockquote id="confession-text">I once blamed the sound on a neighbor moving furniture. I was in a hotel.</blockquote>
+          <button id="next-confession" class="spin-button" type="button" aria-label="Show another anonymous confession">
+            <span>Another one</span><b>↻</b>
+          </button>
+        </div>
+        <p class="anonymous">Submitted anonymously, obviously.</p>
+      </section>
+
+      <section id="membership" class="membership">
+        <div class="membership-copy reveal">
+          <p class="mini-label">The private list</p>
+          <h2>Things we only<br />say <em>behind doors.</em></h2>
+          <p>Occasional field notes, cultural investigations, and elite bathroom intelligence. No spam. That would be awkward.</p>
+        </div>
+        <form class="signup reveal" novalidate>
+          <label for="email">Your least embarrassing email</label>
+          <div class="input-row">
+            <input id="email" name="email" type="email" placeholder="you@somewhere.com" autocomplete="email" required />
+            <button type="submit">Slip it under the door <span>→</span></button>
+          </div>
+          <p class="form-note" aria-live="polite">By entering, you agree to maintain plausible deniability.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-logo" aria-label="Nobody Poops">NOBODY<br />POOPS<span>®</span></div>
+      <div class="footer-meta">
+        <p>Made with the door locked.<br />Somewhere, privately.</p>
+        <p>© 2026 Nobody Poops<br />All movements reserved.</p>
+      </div>
+      <a href="#top" class="back-top">Back to the throne ↑</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
