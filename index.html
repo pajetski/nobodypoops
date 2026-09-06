@@ -1,654 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nobody Poops | Tactical Anomaly Containment & Civilian Camouflage</title>
-  <meta name="description" content="Official tactical gear and containment solutions for the 0.00001% of the population burdened by biological anomalies. Plus premium civilian camouflage headwear.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            clinical: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              400: '#94a3b8',
-              500: '#64748b',
-              600: '#475569',
-              700: '#334155',
-              800: '#1e293b',
-              900: '#0f172a',
-              950: '#020617',
-            },
-            biohazard: {
-              500: '#eab308',
-              600: '#ca8a04',
-            }
-          },
-          fontFamily: {
-            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-            sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .tactical-grid {
-      background-size: 24px 24px;
-      background-image: 
-        linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
-    }
-    .badge-pulse {
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
-    }
-  </style>
-</head>
-<body class="bg-clinical-50 text-clinical-900 font-sans antialiased selection:bg-clinical-900 selection:text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4b900" />
+    <meta name="description" content="Nobody Poops — a very serious publication about a very unserious lie." />
+    <meta property="og:title" content="Nobody Poops® — A Private Matter" />
+    <meta property="og:description" content="A very serious publication about a very unserious lie." />
+    <meta property="og:image" content="assets/nobody-poops-hero.png" />
+    <title>Nobody Poops® — A Private Matter</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"><span></span></div>
 
-  <!-- TOP CLINICAL ALERT BAR -->
-  <aside aria-label="System Notice" class="bg-clinical-900 text-clinical-300 text-xs py-2 px-4 border-b border-clinical-800">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-2 font-mono">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 badge-pulse"></span>
-        <span class="text-white font-semibold tracking-wider">DEFENSE LEVEL 1:</span>
-        <span class="text-clinical-400">BIOLOGICAL ANOMALY CONTAINMENT PROTOCOL ACTIVE</span>
-      </div>
-      <div class="font-mono text-clinical-400 text-[11px]">
-        GLOBAL ANOMALY INCIDENCE RATE: &lt;0.00001%
-      </div>
-    </div>
-  </aside>
-
-  <!-- NAVIGATION HEADER -->
-  <header class="bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-clinical-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 bg-clinical-900 text-white rounded flex items-center justify-center font-mono font-black text-sm">
-          NP
-        </div>
-        <div>
-          <a href="#" class="font-mono font-bold text-lg tracking-tight text-clinical-950 flex items-center gap-2">
-            NOBODYPOOPS<span class="text-xs px-1.5 py-0.5 rounded bg-clinical-100 text-clinical-600 border border-clinical-300">INC.</span>
-          </a>
-          <p class="text-[10px] text-clinical-500 font-mono uppercase tracking-widest hidden sm:block">Tactical Anomaly Supplies</p>
-        </div>
-      </div>
-      <nav class="flex items-center gap-4 text-sm font-medium">
-        <a href="#containment-gear" class="text-clinical-600 hover:text-clinical-900 transition-colors">Tactical Gear</a>
-        <a href="#civilian-camouflage" class="text-clinical-600 hover:text-clinical-900 transition-colors">Civilian Camouflage</a>
-        <a href="#assessment" class="text-clinical-600 hover:text-clinical-900 transition-colors hidden md:block">Anomaly Audit</a>
-        <a href="#containment-gear" class="bg-clinical-900 text-white px-3.5 py-1.5 rounded text-xs font-mono font-semibold hover:bg-clinical-800 transition shadow-sm">
-          DISPENSARY →
-        </a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Nobody Poops, back to top">NP<span>®</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span>Menu</span><i></i><i></i>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#manifesto">The lie</a>
+        <a href="#field-notes">Field notes</a>
+        <a href="#confessional">Confessional</a>
+        <a href="#membership">Join privately</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative tactical-grid border-b border-clinical-200 pt-16 pb-20 overflow-hidden">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-clinical-100 border border-clinical-300 text-clinical-700 text-xs font-mono uppercase mb-6">
-        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-        Medical Anomaly Advisory #001
-      </div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-clinical-950 max-w-4xl mx-auto leading-[1.15]">
-        Well, if you are the only person in the world who happens to poop, <span class="underline decoration-clinical-400 decoration-4 underline-offset-4">you came to the right place.</span>
-      </h1>
-      <p class="mt-6 text-lg sm:text-xl text-clinical-600 max-w-2xl mx-auto leading-relaxed">
-        For the 0.00001% of the human species inexplicably afflicted with biological waste processing. We procure laboratory-tested tactical containment gear and civilian camouflage headwear so your domestic cohabitants never suspect the truth.
-      </p>
-      
-      <div class="mt-10 flex flex-wrap justify-center items-center gap-4 font-mono">
-        <a href="#containment-gear" class="bg-clinical-900 hover:bg-clinical-800 text-white px-6 py-3 rounded text-sm font-semibold tracking-wide transition shadow-sm">
-          VIEW CONTAINMENT GEAR (AMAZON)
-        </a>
-        <a href="#civilian-camouflage" class="bg-white hover:bg-clinical-100 text-clinical-900 border border-clinical-300 px-6 py-3 rounded text-sm font-semibold tracking-wide transition">
-          CIVILIAN CAMOUFLAGE (LOCAL HATS)
-        </a>
-      </div>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img src="assets/nobody-poops-hero.png" alt="A sunny yellow tiled powder room with a white toilet, tropical plant, and disco ball" />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <p class="eyebrow">Est. behind a locked door · 2026</p>
+        <h1 id="hero-title"><span>Nobody</span><span>Poops.</span></h1>
+        <p class="hero-note">A very serious publication<br />about a very unserious lie.</p>
+        <a class="round-link" href="#manifesto" aria-label="Enter the site"><span>Enter<br />privately</span><b>↘</b></a>
+        <p class="issue">Issue № 001<br />The Porcelain Edition</p>
+      </section>
 
-      <!-- CLINICAL STATS BAR -->
-      <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-b border-clinical-200 py-4 text-left font-mono">
+      <div class="ticker" aria-hidden="true">
         <div>
-          <div class="text-[11px] text-clinical-500 uppercase">Non-Poopers</div>
-          <div class="text-xl font-bold text-clinical-900">99.9999%</div>
-        </div>
-        <div>
-          <div class="text-[11px] text-clinical-500 uppercase">Your Status</div>
-          <div class="text-xl font-bold text-red-600">ANOMALOUS</div>
-        </div>
-        <div>
-          <div class="text-[11px] text-clinical-500 uppercase">Odor Secrecy</div>
-          <div class="text-xl font-bold text-clinical-900">100% Hermetic</div>
-        </div>
-        <div>
-          <div class="text-[11px] text-clinical-500 uppercase">Camouflage</div>
-          <div class="text-xl font-bold text-clinical-900">Encinitas, CA</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AFFILIATE DISCLOSURE CALLOUT -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-    <div class="bg-white border border-clinical-200 rounded p-4 flex items-start gap-3 text-xs text-clinical-600 font-mono">
-      <span class="text-base text-clinical-400">ℹ</span>
-      <div>
-        <strong class="text-clinical-800">AFFILIATE TRANSPARENCY NOTICE:</strong> As an Amazon Associate and merchant partner, nobodypoops.com earns commissions from qualifying purchases through external links below at zero additional cost to you. Tactical containment items are supplied and shipped directly by designated third-party distributors.
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 1: TACTICAL CONTAINMENT ARSENAL (AFFILIATE GEAR) -->
-  <section id="containment-gear" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-clinical-300 gap-4">
-      <div>
-        <span class="text-xs font-mono font-semibold uppercase tracking-widest text-clinical-500">Tier 1 Dispensary</span>
-        <h2 class="text-3xl font-bold text-clinical-950 tracking-tight mt-1">Tactical Anomaly Containment Arsenal</h2>
-      </div>
-      <p class="text-sm text-clinical-600 max-w-md font-mono">
-        All items engineered for maximum acoustic, olfactory, and structural mitigation during solo bio-events.
-      </p>
-    </div>
-
-    <!-- PRODUCT GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- ITEM 1: Shreddies Underwear -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[11px] font-mono font-semibold uppercase border border-blue-200">Gas Containment</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-01</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">Shreddies Activated Carbon Filtering Briefs</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Features Zorflex activated carbon back panels that filter and chemically neutralize flatulence before emissions enter the civilian atmosphere.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Military-grade carbon cloth</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 200x odor absorption capacity</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Washable & fully reusable</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $35–$45</span>
-          <a href="https://www.amazon.com/s?k=Shreddies+flatulence+filtering+underwear&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 2: SmellRid Pads -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[11px] font-mono font-semibold uppercase border border-blue-200">Gas Containment</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-02</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">SmellRid Activated Charcoal Deodorizer Pads</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Adhesive carbon inserts for non-specialized undergarments. Mounts directly to interior fabric for secondary gaseous filtration.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Double-sided adhesive mount</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Discreet low-profile 4"x4" fit</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Multi-pack tactical reserve</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $16–$22</span>
-          <a href="https://www.amazon.com/s?k=flatulence+deodorizer+pads&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 3: Poo-Pourri -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 text-[11px] font-mono font-semibold uppercase border border-purple-200">Vapor Lock</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-03</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">Poo-Pourri "Before-You-Go" Vapor Barrier Spray</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Essential oil chemical surface film. Forms an impervious boundary over the bowl reservoir, stopping olfactory evidence before emergence.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Pre-event spray deployment</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Plausible deniability scent profile</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 100+ containment applications</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $10–$14</span>
-          <a href="https://www.amazon.com/s?k=Poo-Pourri+toilet+spray&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 4: Poop Knife -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-rose-50 text-rose-700 text-[11px] font-mono font-semibold uppercase border border-rose-200">Structural Division</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-04</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">The Original Poop Knife</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Reinforced medical silicone-sheathed tool for mechanical division of high-volume anomalous specimens to prevent infrastructure blockage.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Reinforced metal-core shaft</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Non-stick silicone exterior</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Eliminates 99% of plunger calls</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $18–$24</span>
-          <a href="https://www.amazon.com/s?k=Original+Poop+Knife&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 5: Squatty Potty -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 text-[11px] font-mono font-semibold uppercase border border-amber-200">Biomechanical Alignment</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-05</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">Squatty Potty 7" Anatomical Stool</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Shifts the puborectalis muscle into an unobstructed 35-degree angle. Expedites evacuation duration to minimize potential roommate detection.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Doctors' recommended geometry</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Anti-slip base stabilizers</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Tucks cleanly under standard bowls</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $25–$30</span>
-          <a href="https://www.amazon.com/s?k=Squatty+Potty+7+inch&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 6: TUSHY Bidet -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 text-[11px] font-mono font-semibold uppercase border border-cyan-200">Hydraulic Sanitation</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-06</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">TUSHY Classic 3.0 Bidet Attachment</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Non-electric targeted hydraulic washing module. Completely replaces abrasive cellulose fibers with pristine hydrostatic stream decontamination.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 10-minute universal installation</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Precision angle & pressure dials</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Automatic nozzle self-clean rinse</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $79–$99</span>
-          <a href="https://www.amazon.com/s?k=TUSHY+bidet+attachment&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 7: Dude Wipes -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-mono font-semibold uppercase border border-slate-300">Surface Defense</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-07</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">DUDE Wipes Extra-Large Flushables</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Reinforced plant-sourced wipes engineered with 35% larger surface area than standard civilian wipes. Infused with eucalyptus and aloe.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Zero chemical residue formula</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Tensile tear-resistant weave</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Emergency pocket dispenser pack</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $12–$18</span>
-          <a href="https://www.amazon.com/s?k=Dude+Wipes+flushable&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 8: Toilet Nightlight -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-[11px] font-mono font-semibold uppercase border border-indigo-200">Nocturnal Targeting</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-08</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">Motion-Activated RGB Toilet Nightlight</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            PIR sensor beacon illuminating bowl basin upon 5-foot proximity. Prevents harsh bathroom overhead lighting from waking non-afflicted occupants.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 16-color tactical illumination</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Auto shutoff 120s timer</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Flexible universal rim grip</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $11–$15</span>
-          <a href="https://www.amazon.com/s?k=motion+sensor+toilet+night+light&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- ITEM 9: Potty Putter -->
-      <article class="bg-white border border-clinical-200 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-400 transition hover:shadow-md">
-        <div>
-          <div class="flex justify-between items-center mb-3">
-            <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[11px] font-mono font-semibold uppercase border border-emerald-200">Psychological Morale</span>
-            <span class="text-xs font-mono text-clinical-400">ITEM #NP-09</span>
-          </div>
-          <h3 class="text-xl font-bold text-clinical-950">Potty Putter Restroom Putting Green</h3>
-          <p class="text-sm text-clinical-600 mt-2">
-            Precision cognitive distraction module. Maintains operational focus and reduces panic while quarantined in the containment zone.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-xs text-clinical-600 font-mono">
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Custom-cut toilet mat putting surface</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Includes putter, 2 balls & flag</li>
-            <li class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 'Do Not Disturb' door hanger</li>
-          </ul>
-        </div>
-        <div class="mt-6 pt-4 border-t border-clinical-100 flex items-center justify-between">
-          <span class="font-mono text-xs text-clinical-500">Approx. $15–$20</span>
-          <a href="https://www.amazon.com/s?k=Potty+Putter+toilet+golf&tag=nobodypoops-20" target="_blank" rel="sponsored nofollow noopener" class="bg-clinical-900 hover:bg-clinical-800 text-white text-xs font-mono font-semibold px-4 py-2 rounded transition flex items-center gap-1">
-            Procure Gear <span class="text-[10px]">↗</span>
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- SECTION 2: CIVILIAN CAMOUFLAGE (DIRECT HATS MERCH) -->
-  <section id="civilian-camouflage" class="bg-clinical-900 text-white py-20 border-t border-b border-clinical-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-4 border-b border-clinical-800 gap-4">
-        <div>
-          <span class="text-xs font-mono font-semibold uppercase tracking-widest text-biohazard-500">Tier 2 In-House Merch</span>
-          <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Civilian Camouflage Protocol</h2>
-          <p class="text-sm text-clinical-400 mt-2 font-mono">
-            If you must venture out into North County San Diego carrying your shameful secret, blend in with the non-afflicted public.
-          </p>
-        </div>
-        <div class="font-mono text-xs bg-clinical-800 border border-clinical-700 px-3 py-1.5 rounded text-clinical-300">
-          STATUS: PRODUCED IN-HOUSE // DIRECT FULFILLMENT
+          <span>Everybody does it</span><i>✦</i><span>Nobody admits it</span><i>✦</i><span>Please knock</span><i>✦</i>
+          <span>Everybody does it</span><i>✦</i><span>Nobody admits it</span><i>✦</i><span>Please knock</span><i>✦</i>
         </div>
       </div>
 
-      <!-- MERCH HATS GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- HAT 1: Pandora's Pizza -->
-        <div class="bg-clinical-950 border border-clinical-800 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-600 transition">
-          <div>
-            <div class="w-full h-48 bg-clinical-900 rounded-md border border-clinical-800 flex items-center justify-center text-center p-4 relative overflow-hidden group">
-              <div class="absolute inset-0 bg-gradient-to-tr from-clinical-900 to-clinical-800 opacity-60"></div>
-              <div class="relative z-10 font-mono">
-                <span class="text-3xl mb-1 block">🍕</span>
-                <span class="text-sm font-bold text-white tracking-widest uppercase">PANDORA'S PIZZA</span>
-                <span class="text-[10px] text-clinical-400 block mt-1">LEUCADIA COVERT OPS</span>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mt-5">Pandora's Pizza Unstructured Dad Hat</h3>
-            <p class="text-xs text-clinical-400 mt-2 leading-relaxed">
-              Washed black chino twill with high-density gold embroidery. Engineered for zero suspicion while grabbing a slice on Coast Highway 101.
-            </p>
-            <div class="mt-4 text-xs font-mono text-clinical-400 space-y-1">
-              <div>• 100% garment-washed cotton twill</div>
-              <div>• Antique brass buckle closure</div>
-              <div>• North County local badge</div>
-            </div>
-          </div>
-          <div class="mt-6 pt-4 border-t border-clinical-800 flex items-center justify-between">
-            <div>
-              <span class="text-2xl font-bold font-mono text-white">$32</span>
-              <span class="text-[10px] text-clinical-400 block font-mono">Free Domestic Shipping</span>
-            </div>
-            <button onclick="triggerOrder('Pandora\'s Pizza Dad Hat', 32)" class="bg-white text-clinical-950 hover:bg-clinical-200 text-xs font-mono font-bold px-4 py-2.5 rounded transition">
-              Order Hat →
-            </button>
+      <section id="manifesto" class="manifesto dark-section">
+        <div class="section-label reveal"><span>01</span> The uncomfortable truth</div>
+        <p class="statement reveal">We all disappear<br />for <em>“a minute.”</em></p>
+        <div class="manifesto-grid">
+          <p class="big-copy reveal">There is no productivity hack. No five-step morning ritual. Sometimes the bravest thing you can do is lock the door, put your phone on airplane mode, and take the time you need.</p>
+          <div class="fine-print reveal">
+            <p>Nobody Poops is an independent celebration of privacy, honesty, and the small tiled rooms where our best ideas arrive uninvited.</p>
+            <p>We make field notes for overthinkers, nervous guests, first dates, open-plan offices, and anyone who has ever turned on a faucet for acoustic camouflage.</p>
           </div>
         </div>
+      </section>
 
-        <!-- HAT 2: Fulano's -->
-        <div class="bg-clinical-950 border border-clinical-800 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-600 transition">
-          <div>
-            <div class="w-full h-48 bg-clinical-900 rounded-md border border-clinical-800 flex items-center justify-center text-center p-4 relative overflow-hidden group">
-              <div class="absolute inset-0 bg-gradient-to-tr from-clinical-900 to-clinical-800 opacity-60"></div>
-              <div class="relative z-10 font-mono">
-                <span class="text-3xl mb-1 block">☕</span>
-                <span class="text-sm font-bold text-white tracking-widest uppercase">FULANO'S</span>
-                <span class="text-[10px] text-clinical-400 block mt-1">ENCINITAS LOW PROFILE</span>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mt-5">Fulano's 5-Panel Retro Snapback</h3>
-            <p class="text-xs text-clinical-400 mt-2 leading-relaxed">
-              Classic coastal 5-panel structure featuring woven vintage typographic patch. Emits an aura of someone whose gut functions normally.
-            </p>
-            <div class="mt-4 text-xs font-mono text-clinical-400 space-y-1">
-              <div>• Structured cotton/nylon blend</div>
-              <div>• Flat bill with vintage rope detail</div>
-              <div>• Reinforced sweatband</div>
-            </div>
-          </div>
-          <div class="mt-6 pt-4 border-t border-clinical-800 flex items-center justify-between">
-            <div>
-              <span class="text-2xl font-bold font-mono text-white">$34</span>
-              <span class="text-[10px] text-clinical-400 block font-mono">Free Domestic Shipping</span>
-            </div>
-            <button onclick="triggerOrder('Fulano\'s 5-Panel Snapback', 34)" class="bg-white text-clinical-950 hover:bg-clinical-200 text-xs font-mono font-bold px-4 py-2.5 rounded transition">
-              Order Hat →
-            </button>
-          </div>
+      <section id="field-notes" class="field-notes">
+        <div class="section-label reveal"><span>02</span> Field notes</div>
+        <div class="section-intro reveal">
+          <h2>Know before<br />you <em>go.</em></h2>
+          <p>Unsolicited research from the world’s least qualified bathroom correspondents.</p>
         </div>
 
-        <!-- HAT 3: Chinatown Encinitas -->
-        <div class="bg-clinical-950 border border-clinical-800 rounded-lg p-6 flex flex-col justify-between hover:border-clinical-600 transition">
-          <div>
-            <div class="w-full h-48 bg-clinical-900 rounded-md border border-clinical-800 flex items-center justify-center text-center p-4 relative overflow-hidden group">
-              <div class="absolute inset-0 bg-gradient-to-tr from-clinical-900 to-clinical-800 opacity-60"></div>
-              <div class="relative z-10 font-mono">
-                <span class="text-3xl mb-1 block">🥟</span>
-                <span class="text-sm font-bold text-white tracking-widest uppercase">CHINATOWN</span>
-                <span class="text-[10px] text-clinical-400 block mt-1">HIGH DENSITY CONCEALMENT</span>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mt-5">Chinatown Encinitas Corduroy Cap</h3>
-            <p class="text-xs text-clinical-400 mt-2 leading-relaxed">
-              Wide-wale corduroy in deep forest olive with tonal red insignia. The ultimate tactical distraction piece for crowded dining establishments.
-            </p>
-            <div class="mt-4 text-xs font-mono text-clinical-400 space-y-1">
-              <div>• 100% 8-wale cotton corduroy</div>
-              <div>• Embroidered tonal ventilation eyelets</div>
-              <div>• Self-fabric strap with custom clasp</div>
-            </div>
-          </div>
-          <div class="mt-6 pt-4 border-t border-clinical-800 flex items-center justify-between">
-            <div>
-              <span class="text-2xl font-bold font-mono text-white">$36</span>
-              <span class="text-[10px] text-clinical-400 block font-mono">Free Domestic Shipping</span>
-            </div>
-            <button onclick="triggerOrder('Chinatown Encinitas Corduroy Cap', 36)" class="bg-white text-clinical-950 hover:bg-clinical-200 text-xs font-mono font-bold px-4 py-2.5 rounded transition">
-              Order Hat →
-            </button>
-          </div>
+        <div class="note-grid">
+          <article class="note-card reveal">
+            <p class="card-number">01 / SOUND</p>
+            <div class="card-icon sound-icon" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>The courtesy flush</h3>
+            <p>A classic. Wasteful? Maybe. Effective? We’re not here to judge.</p>
+          </article>
+          <article class="note-card coral reveal">
+            <p class="card-number">02 / TIMING</p>
+            <div class="card-icon clock-icon" aria-hidden="true"><span></span></div>
+            <h3>The 11-minute rule</h3>
+            <p>Short enough to avoid a search party. Long enough to finish the article.</p>
+          </article>
+          <article class="note-card blue reveal">
+            <p class="card-number">03 / EXIT</p>
+            <div class="card-icon exit-icon" aria-hidden="true">↗</div>
+            <h3>Leave no trace</h3>
+            <p>Fan on. Seat down. Alibi ready. Re-enter society with quiet confidence.</p>
+          </article>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3: ANOMALY SELF-AUDIT (INTERACTIVE QUIZ) -->
-  <section id="assessment" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-    <div class="bg-white border border-clinical-200 rounded-xl p-8 shadow-sm">
-      <span class="text-xs font-mono font-semibold uppercase tracking-widest text-clinical-500">Diagnostic Tool</span>
-      <h2 class="text-2xl sm:text-3xl font-bold text-clinical-950 mt-1">Anomaly Diagnostic Check</h2>
-      <p class="text-sm text-clinical-600 mt-2 max-w-xl mx-auto">
-        Verify your statistical status before requesting tactical containment allocation.
-      </p>
-
-      <div class="mt-8 text-left max-w-xl mx-auto space-y-4 font-mono text-xs">
-        <div class="border border-clinical-200 p-4 rounded bg-clinical-50">
-          <p class="font-bold text-clinical-800 mb-2">Question 1: After ingesting an organic burrito, what occurs within 12–24 hours?</p>
-          <label class="flex items-center gap-2 mb-1.5 cursor-pointer">
-            <input type="radio" name="q1" value="normal" class="text-clinical-900">
-            <span>Nothing. Nutrients are 100% absorbed; zero waste matter exists (Normal Human).</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="q1" value="anomaly" class="text-clinical-900">
-            <span class="text-red-700 font-semibold">Abdominal peristalsis forcing a private restroom evacuation (Statistical Anomaly).</span>
-          </label>
+      <section class="numbers dark-section" aria-label="Vital statistics">
+        <div class="section-label reveal"><span>03</span> By the numbers</div>
+        <div class="number-row reveal">
+          <strong data-count="100">0</strong><sup>%</sup>
+          <p>of people do it.<br /><span>Our lawyers insisted on “approximately.”</span></p>
         </div>
-
-        <div class="border border-clinical-200 p-4 rounded bg-clinical-50">
-          <p class="font-bold text-clinical-800 mb-2">Question 2: Have you ever reached for a roll of perforated cellulose paper?</p>
-          <label class="flex items-center gap-2 mb-1.5 cursor-pointer">
-            <input type="radio" name="q2" value="normal" class="text-clinical-900">
-            <span>No, that material is for decorative purposes only.</span>
-          </label>
-          <label class="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="q2" value="anomaly" class="text-clinical-900">
-            <span class="text-red-700 font-semibold">Yes, multiple times per calendar week under strict secrecy.</span>
-          </label>
+        <div class="number-row reveal">
+          <strong data-count="0">0</strong><sup>%</sup>
+          <p>want to discuss it<br /><span>before the appetizers arrive.</span></p>
         </div>
-      </div>
+      </section>
 
-      <div class="mt-6">
-        <button onclick="runDiagnostic()" class="bg-clinical-900 hover:bg-clinical-800 text-white font-mono text-xs font-semibold px-6 py-2.5 rounded transition">
-          CALCULATE ANOMALY STATUS
-        </button>
-        <div id="diagnostic-result" class="mt-4 hidden p-4 bg-red-50 border border-red-200 text-red-900 rounded font-mono text-xs">
-          <strong>VERDICT: POSITIVE FOR ANOMALY.</strong> You are confirmed to be the only person in the civilized world with active intestinal excretion. Please report to the Tactical Containment Arsenal above.
+      <section id="confessional" class="confessional">
+        <div class="section-label reveal"><span>04</span> The anonymous confessional</div>
+        <div class="confession-wrap reveal">
+          <p class="confession-mark">“</p>
+          <blockquote id="confession-text">I once blamed the sound on a neighbor moving furniture. I was in a hotel.</blockquote>
+          <button id="next-confession" class="spin-button" type="button" aria-label="Show another anonymous confession">
+            <span>Another one</span><b>↻</b>
+          </button>
         </div>
-      </div>
-    </div>
-  </section>
+        <p class="anonymous">Submitted anonymously, obviously.</p>
+      </section>
 
-  <!-- ORDER MODAL FOR HATS -->
-  <div id="order-modal" class="fixed inset-0 bg-clinical-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-lg max-w-md w-full p-6 border border-clinical-200 shadow-2xl font-sans">
-      <div class="flex justify-between items-center pb-3 border-b border-clinical-100 font-mono">
-        <h3 class="font-bold text-clinical-950 text-sm" id="modal-item-name">Order Hat</h3>
-        <button onclick="closeModal()" class="text-clinical-400 hover:text-clinical-700 text-lg">&times;</button>
-      </div>
-      <div class="py-4">
-        <p class="text-xs text-clinical-600 mb-4 font-mono">
-          Enter your dispatch coordinates. Hats are embroidered and fulfilled directly from North County San Diego.
-        </p>
-        <form onsubmit="handleOrderSubmit(event)" class="space-y-3 font-mono text-xs">
-          <div>
-            <label class="block text-clinical-700 font-semibold mb-1">Full Name</label>
-            <input type="text" required placeholder="Alex Doe" class="w-full border border-clinical-300 rounded px-3 py-2 text-clinical-900 focus:outline-none focus:border-clinical-900">
+      <section id="membership" class="membership">
+        <div class="membership-copy reveal">
+          <p class="mini-label">The private list</p>
+          <h2>Things we only<br />say <em>behind doors.</em></h2>
+          <p>Occasional field notes, cultural investigations, and elite bathroom intelligence. No spam. That would be awkward.</p>
+        </div>
+        <form class="signup reveal" novalidate>
+          <label for="email">Your least embarrassing email</label>
+          <div class="input-row">
+            <input id="email" name="email" type="email" placeholder="you@somewhere.com" autocomplete="email" required />
+            <button type="submit">Slip it under the door <span>→</span></button>
           </div>
-          <div>
-            <label class="block text-clinical-700 font-semibold mb-1">Shipping Email</label>
-            <input type="email" required placeholder="alex@example.com" class="w-full border border-clinical-300 rounded px-3 py-2 text-clinical-900 focus:outline-none focus:border-clinical-900">
-          </div>
-          <div>
-            <label class="block text-clinical-700 font-semibold mb-1">Delivery Address</label>
-            <input type="text" required placeholder="123 Coast Hwy 101, Encinitas, CA" class="w-full border border-clinical-300 rounded px-3 py-2 text-clinical-900 focus:outline-none focus:border-clinical-900">
-          </div>
-          <div class="pt-2">
-            <button type="submit" class="w-full bg-clinical-900 hover:bg-clinical-800 text-white font-bold py-2.5 rounded transition text-xs">
-              Proceed to Stripe Checkout (<span id="modal-price">$32</span>)
-            </button>
-          </div>
+          <p class="form-note" aria-live="polite">By entering, you agree to maintain plausible deniability.</p>
         </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-logo" aria-label="Nobody Poops">NOBODY<br />POOPS<span>®</span></div>
+      <div class="footer-meta">
+        <p>Made with the door locked.<br />Somewhere, privately.</p>
+        <p>© 2026 Nobody Poops<br />All movements reserved.</p>
       </div>
-      <div class="text-[10px] text-clinical-400 font-mono text-center border-t border-clinical-100 pt-3">
-        Encrypted 256-Bit SSL Checkout Powered by Stripe
-      </div>
-    </div>
-  </div>
+      <a href="#top" class="back-top">Back to the throne ↑</a>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="bg-clinical-100 border-t border-clinical-200 py-12 text-clinical-600 text-xs font-mono">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-clinical-200">
-        <div>
-          <div class="font-bold text-clinical-950 text-sm mb-2">NOBODYPOOPS.COM</div>
-          <p class="leading-relaxed text-[11px] text-clinical-500">
-            A satirical tactical gear dispensary & localized apparel initiative for the solitary biological anomaly.
-          </p>
-        </div>
-        <div>
-          <div class="font-bold text-clinical-950 text-sm mb-2">AFFILIATE COMPLIANCE</div>
-          <p class="leading-relaxed text-[11px] text-clinical-500">
-            As an Amazon Associate, nobodypoops.com earns from qualifying purchases. Amazon, the Amazon logo, and AmazonSupply are trademarks of Amazon.com, Inc. or its affiliates.
-          </p>
-        </div>
-        <div>
-          <div class="font-bold text-clinical-950 text-sm mb-2">MEDICAL ADVISORY</div>
-          <p class="leading-relaxed text-[11px] text-clinical-500">
-            Disclaimer: If you genuinely believe nobody else on Earth poops, please consult a 5th grade biology textbook or licensed medical professional.
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-clinical-400">
-        <div>© 2026 nobodypoops.com. All rights reserved. Encinitas, California.</div>
-        <div class="flex gap-4">
-          <a href="#" class="hover:underline">Privacy Policy</a>
-          <a href="#" class="hover:underline">Terms of Service</a>
-          <a href="#" class="hover:underline">Affiliate Disclosure</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    function runDiagnostic() {
-      const res = document.getElementById('diagnostic-result');
-      res.classList.remove('hidden');
-    }
-
-    function triggerOrder(name, price) {
-      document.getElementById('modal-item-name').innerText = 'Secure Order: ' + name;
-      document.getElementById('modal-price').innerText = '$' + price;
-      document.getElementById('order-modal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('order-modal').classList.add('hidden');
-    }
-
-    function handleOrderSubmit(e) {
-      e.preventDefault();
-      alert('Stripe Checkout test bridge initialized. In production, this redirects directly to your Stripe checkout session.');
-      closeModal();
-    }
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
