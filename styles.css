@@ -168,3 +168,62 @@ footer { min-height: 550px; background: var(--coral); padding: 60px 3.2vw 35px; 
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- 05 Gift shop ---------- */
+.gift-shop { background: var(--paper); padding: 100px 3.2vw 120px; position: relative; }
+.gift-shop .section-intro h2 em { color: var(--coral); }
+.hat-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
+.hat-card { display: flex; flex-direction: column; border-right: 1px solid var(--ink); background: var(--paper); transition: transform .25s, box-shadow .25s; }
+.hat-card:last-child { border-right: 0; }
+.hat-card:hover { transform: translateY(-8px); box-shadow: 0 8px 0 var(--ink); z-index: 1; }
+.hat-photo { position: relative; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; background: #fff; border-bottom: 1px solid var(--ink); }
+.hat-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .4s, transform .6s; }
+.hat-photo img.alt { opacity: 0; }
+.hat-card:hover .hat-photo img.alt, .hat-card:focus-within .hat-photo img.alt { opacity: 1; }
+.hat-card:hover .hat-photo img { transform: scale(1.03); }
+.hat-body { flex: 1; display: flex; flex-direction: column; padding: 24px; }
+.hat-card:nth-child(1) .hat-body { background: var(--yellow); }
+.hat-card:nth-child(2) .hat-body { background: var(--coral); }
+.hat-card:nth-child(3) .hat-body { background: var(--blue); }
+.hat-body h3 { margin: 38px 0 12px; font: 400 clamp(44px, 4.4vw, 64px)/.9 var(--serif); letter-spacing: -.04em; }
+.hat-tag { margin: 0 0 40px; max-width: 320px; font-size: 10px; line-height: 1.55; }
+.hat-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: end; gap: 12px; border-top: 1px solid var(--ink); padding-top: 14px; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
+.hat-price { font: 400 42px/.8 var(--serif); letter-spacing: -.03em; text-transform: none; font-variant-numeric: tabular-nums; }
+.buy-button { margin-top: 18px; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: var(--ink); color: var(--paper); text-decoration: none; text-transform: uppercase; font-size: 10px; letter-spacing: .1em; border-radius: 999px; transition: background .25s, color .25s; }
+.buy-button span { font-size: 20px; transition: transform .25s; }
+.buy-button:hover { background: var(--paper); color: var(--ink); }
+.buy-button:hover span { transform: translateX(6px); }
+.buy-button:focus-visible, .shelf a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.shelf-wrap { margin-top: 140px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; align-items: start; }
+.shelf-head { position: sticky; top: 40px; }
+.shelf-head .mini-label { margin-bottom: 40px; }
+.occupied { font-weight: 400; display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border: 1px solid var(--ink); border-radius: 999px; }
+.occupied:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+.shelf-head h3 { margin: 0; font: 400 clamp(58px, 7vw, 108px)/.8 var(--serif); letter-spacing: -.05em; }
+.shelf-head h3 em { color: var(--coral); }
+.shelf-head > p:last-child { max-width: 360px; margin: 40px 0 0; font-size: 11px; line-height: 1.7; }
+.shelf { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.shelf li { border-bottom: 1px solid var(--ink); }
+.shelf a { display: grid; grid-template-columns: 54px 1fr auto; gap: 6px 20px; align-items: baseline; padding: 22px 0; text-decoration: none; transition: background .2s, padding .25s; }
+.shelf .no { font-size: 9px; letter-spacing: .1em; }
+.shelf .name { font: 400 clamp(28px, 2.6vw, 38px)/1 var(--serif); letter-spacing: -.02em; }
+.shelf .why { grid-column: 2; font-size: 10px; line-height: 1.5; opacity: .75; }
+.shelf .go { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; white-space: nowrap; }
+.shelf a:hover { background: var(--lime); padding-inline: 14px; }
+.shelf a:hover .name { font-style: italic; }
+.shop-fine { margin: 60px 0 0; font-size: 8px; text-transform: uppercase; letter-spacing: .06em; }
+.shop-toast { position: fixed; left: 50%; bottom: 28px; z-index: 150; margin: 0; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--ink); color: var(--paper); padding: 14px 22px; border-radius: 999px; font-size: 11px; max-width: calc(100% - 32px); text-align: center; transition: opacity .25s, transform .25s; }
+.shop-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 800px) {
+  .gift-shop { padding: 70px 5vw 85px; }
+  .hat-grid { grid-template-columns: 1fr; }
+  .hat-card { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .hat-card:last-child { border-bottom: 0; }
+  .shelf-wrap { grid-template-columns: 1fr; gap: 50px; margin-top: 100px; }
+  .shelf-head { position: static; }
+  .shelf-head h3 { font-size: 18vw; }
+  .shelf a { grid-template-columns: 34px 1fr; }
+  .shelf .go { grid-column: 2; }
+}

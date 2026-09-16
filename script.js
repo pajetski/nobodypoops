@@ -84,3 +84,57 @@ document.querySelector('.signup').addEventListener('submit', (event) => {
   note.textContent = 'Your secret is safe with us.';
   input.disabled = true;
 });
+
+/* ---------- Gift shop config: edit these ---------- */
+const SHOP = {
+  amazonTag: 'nobodypoops-20', // Amazon Associates tracking ID
+  hats: {
+    fulanos:   { price: 34, checkout: 'https://buy.stripe.com/REPLACE_FULANOS' },
+    chinatown: { price: 34, checkout: 'https://buy.stripe.com/REPLACE_CHINATOWN' },
+    ohurleys:  { price: 34, checkout: 'https://buy.stripe.com/REPLACE_OHURLEYS' }
+  },
+  shelf: [
+    ['Squatty Potty', 'Posture correction for an activity that does not occur.', 'squatty potty toilet stool'],
+    ['Poo-Pourri Before-You-Go', 'A preemptive apology in a bottle.', 'poo-pourri before you go spray'],
+    ['TUSHY Classic bidet', 'Popular with the kind of people who would need it.', 'tushy classic bidet attachment'],
+    ['Everyone Poops, by Taro Gomi', 'The opposing viewpoint. We stock it for balance.', 'everyone poops taro gomi'],
+    ['Uncle John’s Bathroom Reader', 'Reading material for a room we have never used.', 'uncle johns bathroom reader'],
+    ['Motion-activated toilet light', 'For 3 a.m. visits that are none of our business.', 'motion activated toilet night light'],
+    ['OXO toilet plunger', 'Purely hypothetical.', 'oxo good grips toilet plunger'],
+    ['Matches, bathroom-grade', 'The candle was not for ambiance. We all knew.', 'bathroom matches odor']
+  ]
+};
+
+const shelfEl = document.querySelector('#shelf');
+SHOP.shelf.forEach(([name, why, query], i) => {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${encodeURIComponent(SHOP.amazonTag)}`;
+  a.target = '_blank';
+  a.rel = 'sponsored nofollow noopener';
+  a.innerHTML = `<span class="no">2.${String(i + 1).padStart(2, '0')}</span><span class="name"></span><span class="go">Amazon ↗</span><span class="why"></span>`;
+  a.querySelector('.name').textContent = name;
+  a.querySelector('.why').textContent = why;
+  li.appendChild(a);
+  shelfEl.appendChild(li);
+});
+
+const shopToast = document.querySelector('#shop-toast');
+let toastTimer;
+document.querySelectorAll('.hat-card').forEach((card) => {
+  const hat = SHOP.hats[card.dataset.hat];
+  const button = card.querySelector('.buy-button');
+  card.querySelector('.hat-price').textContent = `$${hat.price}`;
+  if (hat.checkout.includes('REPLACE_')) {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      shopToast.textContent = 'The register opens soon. The hat is real; the checkout isn’t yet.';
+      shopToast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => shopToast.classList.remove('show'), 2800);
+    });
+  } else {
+    button.href = hat.checkout;
+    button.rel = 'noopener';
+  }
+});
