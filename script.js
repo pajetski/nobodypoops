@@ -89,9 +89,9 @@ document.querySelector('.signup').addEventListener('submit', (event) => {
 const SHOP = {
   amazonTag: 'nobodypoops-20', // Amazon Associates tracking ID
   hats: {
-    fulanos:   { price: 34, checkout: 'https://buy.stripe.com/REPLACE_FULANOS' },
-    chinatown: { price: 34, checkout: 'https://buy.stripe.com/REPLACE_CHINATOWN' },
-    ohurleys:  { price: 34, checkout: 'https://buy.stripe.com/REPLACE_OHURLEYS' }
+    fulanos:   { price: 34, checkout: 'https://buy.stripe.com/eVq3cv3rabae9Iu5y38k800' },
+    chinatown: { price: 34, checkout: 'https://buy.stripe.com/6oU9ATd1KceicUGgcH8k801' },
+    ohurleys:  { price: 34, checkout: 'https://buy.stripe.com/28EdR9gdWbae2g2aSn8k802' }
   },
   shelf: [
     ['Squatty Potty', 'Posture correction for an activity that does not occur.', 'squatty potty toilet stool'],
