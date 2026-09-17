@@ -33,10 +33,11 @@ button, input { font: inherit; }
 .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.9) contrast(1.02); transform: scale(1.01); }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(244,185,0,.25) 0%, transparent 35%, rgba(0,0,0,.06) 100%); mix-blend-mode: multiply; }
 .eyebrow { position: absolute; top: 112px; left: 3.2vw; margin: 0; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
-.hero h1 { position: absolute; top: 19%; left: 3.2vw; right: 3.2vw; margin: 0; font: 400 clamp(110px, 18vw, 280px)/.71 var(--serif); letter-spacing: -.065em; pointer-events: none; }
+.hero h1 { position: absolute; top: 16%; left: 3.2vw; right: 3.2vw; margin: 0; font: 400 clamp(110px, 18vw, 280px)/.71 var(--serif); letter-spacing: -.065em; pointer-events: none; }
 .hero h1 span { display: block; }
 .hero h1 span:nth-child(2) { text-align: right; font-style: italic; }
-.hero h1 .but-you { text-align: right; font-style: italic; font-size: .36em; letter-spacing: -.03em; margin-top: .12em; padding-right: .06em; }
+.hero h1 .but-you { text-align: left; font-style: italic; font-size: .34em; letter-spacing: -.03em; margin-top: .58em; color: var(--coral); -webkit-text-stroke: 1px rgba(17,17,15,.9); paint-order: stroke fill; opacity: 0; transform: translateY(14px); animation: but-you 1.1s cubic-bezier(.2,.7,.3,1) 1.4s forwards; }
+@keyframes but-you { to { opacity: 1; transform: none; } }
 .hero-note { position: absolute; left: 3.2vw; bottom: 42px; margin: 0; font: 400 clamp(20px, 2vw, 30px)/1.05 var(--serif); }
 .issue { position: absolute; right: 3.2vw; bottom: 42px; text-align: right; margin: 0; font-size: 9px; line-height: 1.5; text-transform: uppercase; }
 .round-link { position: absolute; right: 7vw; top: auto; bottom: 150px; width: 126px; height: 126px; padding: 23px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 50%; background: var(--coral); color: var(--ink); text-decoration: none; text-transform: uppercase; font-size: 10px; transition: transform .3s, background .3s; }
@@ -44,8 +45,8 @@ button, input { font: inherit; }
 .round-link:hover { transform: rotate(8deg) scale(1.06); background: var(--lime); }
 
 .ticker { background: var(--coral); border-block: 1px solid var(--ink); overflow: hidden; padding: 13px 0; }
-.ticker div { width: max-content; display: flex; gap: 25px; align-items: center; animation: ticker 25s linear infinite; }
-.ticker span { font: italic 28px/1 var(--serif); }
+.ticker div { width: max-content; display: flex; gap: 25px; align-items: center; animation: ticker 45s linear infinite; }
+.ticker span { font: italic clamp(20px, 2.1vw, 28px)/1 var(--serif); }
 .ticker i { font-style: normal; font-size: 12px; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
@@ -135,9 +136,9 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .site-header.menu-open { position: fixed; }
   .hero { min-height: 540px; height: max(540px, 88svh); }
   .eyebrow { top: 90px; }
-  .hero h1 { top: 17%; font-size: 25vw; line-height: .78; }
+  .hero h1 { top: 15%; font-size: 25vw; line-height: .78; }
   .hero h1 span:nth-child(2) { margin-top: 8px; }
-  .hero h1 .but-you { font-size: .4em; margin-top: .1em; }
+  .hero h1 .but-you { font-size: .38em; margin-top: .5em; -webkit-text-stroke-width: .8px; }
   .round-link { width: 96px; height: 96px; right: 5vw; top: auto; bottom: 86px; padding: 16px; }
   .issue { display: none; }
   .manifesto, .field-notes, .numbers, .confessional, .membership { padding: 44px 5vw 52px; }
@@ -229,4 +230,28 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .shelf-head h3 { font-size: 18vw; }
   .shelf a { grid-template-columns: 34px 1fr; }
   .shelf .go { grid-column: 2; }
+}
+
+/* ---------- 06 The intervention ---------- */
+.intervention { background: var(--yellow); padding: 72px 3.2vw 84px; border-top: 1px solid var(--ink); }
+.callback { margin: 44px 0 14px; font: 400 clamp(22px, 2.4vw, 34px)/1 var(--serif); }
+.callback em { font-style: italic; }
+.intervention h2 { margin: 0; font: 400 clamp(56px, 8.4vw, 132px)/.84 var(--serif); letter-spacing: -.05em; }
+.intervention h2 em { font-style: italic; color: var(--coral); }
+.help-grid { margin-top: 48px; display: grid; grid-template-columns: 1fr auto; gap: 6vw; align-items: end; }
+.help-copy { margin: 0; max-width: 520px; font-size: 11px; line-height: 1.7; }
+.help-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.help-button { display: inline-flex; align-items: center; gap: 12px; padding: 18px 26px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; text-transform: uppercase; font-size: 10px; letter-spacing: .1em; transition: transform .25s, background .25s, color .25s; }
+.help-button span { font-size: 16px; }
+.help-button:hover { transform: translateY(-2px); background: var(--coral); color: var(--ink); }
+.help-button.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.help-button.ghost:hover { background: var(--ink); color: var(--yellow); }
+.help-button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+@media (max-width: 800px) {
+  .intervention { padding: 44px 5vw 52px; }
+  .callback { margin: 28px 0 10px; }
+  .intervention h2 { font-size: 13vw; }
+  .help-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; align-items: start; }
+  .help-button { flex: 1 1 140px; justify-content: center; }
 }
