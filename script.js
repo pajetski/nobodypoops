@@ -95,7 +95,7 @@ document.querySelectorAll('.signup').forEach((form) => form.addEventListener('su
 const NP_ANALYTICS = {
   // 1. Sign up free at goatcounter.com, pick a site code, then put it here.
   //    Example: code 'nobodypoops' -> 'https://nobodypoops.goatcounter.com/count'
-  endpoint: 'https://REPLACE.goatcounter.com/count'
+       endpoint: 'https://nobodypoops.goatcounter.com/count'
 };
 
 const SHOP = {
