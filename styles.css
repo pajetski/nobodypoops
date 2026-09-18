@@ -216,13 +216,18 @@ footer { min-height: 340px; background: var(--coral); padding: 60px 3.2vw 56px; 
 .shelf-head > p:last-child { max-width: 360px; margin: 24px 0 0; font-size: 11px; line-height: 1.7; }
 .shelf { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .shelf li { border-bottom: 1px solid var(--ink); }
-.shelf a { display: grid; grid-template-columns: 54px 1fr auto; gap: 5px 20px; align-items: baseline; padding: 16px 0; text-decoration: none; transition: background .2s, padding .25s; }
+.shelf a { display: grid; grid-template-columns: 48px 52px 1fr auto; gap: 5px 20px; align-items: baseline; padding: 16px 0; text-decoration: none; transition: background .2s, padding .25s; }
 .shelf .no { font-size: 9px; letter-spacing: .1em; }
 .shelf .name { font: 400 clamp(28px, 2.6vw, 38px)/1 var(--serif); letter-spacing: -.02em; }
-.shelf .why { grid-column: 2; font-size: 10px; line-height: 1.5; opacity: .75; }
+.shelf .why { grid-column: 3; font-size: 10px; line-height: 1.5; opacity: .75; }
 .shelf .go { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; white-space: nowrap; }
 .shelf a:hover { background: var(--lime); padding-inline: 14px; }
 .shelf a:hover .name { font-style: italic; }
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.shelf .ic { align-self: center; }
+.shelf .ic svg { display: block; width: 38px; height: 38px; }
+.shelf a:hover .ic svg { transform: rotate(-6deg); }
+.shelf .ic svg { transition: transform .25s; }
 .shop-fine { margin: 36px 0 0; font-size: 8px; text-transform: uppercase; letter-spacing: .06em; }
 .shop-toast { position: fixed; left: 50%; bottom: 28px; z-index: 150; margin: 0; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--ink); color: var(--paper); padding: 14px 22px; border-radius: 999px; font-size: 11px; max-width: calc(100% - 32px); text-align: center; transition: opacity .25s, transform .25s; }
 .shop-toast.show { opacity: 1; transform: translate(-50%, 0); }
@@ -235,8 +240,10 @@ footer { min-height: 340px; background: var(--coral); padding: 60px 3.2vw 56px; 
   .shelf-wrap { grid-template-columns: 1fr; gap: 32px; margin-top: 52px; }
   .shelf-head { position: static; }
   .shelf-head h3 { font-size: 18vw; }
-  .shelf a { grid-template-columns: 34px 1fr; }
-  .shelf .go { grid-column: 2; }
+  .shelf a { grid-template-columns: 30px 40px 1fr; }
+  .shelf .ic svg { width: 30px; height: 30px; }
+  .shelf .go { grid-column: 3; }
+  .shelf .why { grid-column: 3; }
 }
 
 /* ---------- 06 The intervention ---------- */

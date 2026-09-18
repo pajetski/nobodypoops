@@ -97,25 +97,27 @@ const SHOP = {
     ohurleys:  { price: 34, checkout: 'https://buy.stripe.com/28EdR9gdWbae2g2aSn8k802' }
   },
   shelf: [
-    ['Squatty Potty', 'Posture correction for an activity that does not occur.', 'squatty potty toilet stool'],
-    ['Poo-Pourri Before-You-Go', 'A preemptive apology in a bottle.', 'poo-pourri before you go spray'],
-    ['TUSHY Classic bidet', 'Popular with the kind of people who would need it.', 'tushy classic bidet attachment'],
-    ['Everyone Poops, by Taro Gomi', 'The opposing viewpoint. We stock it for balance.', 'everyone poops taro gomi'],
-    ['Uncle John’s Bathroom Reader', 'Reading material for a room we have never used.', 'uncle johns bathroom reader'],
-    ['Motion-activated toilet light', 'For 3 a.m. visits that are none of our business.', 'motion activated toilet night light'],
-    ['OXO toilet plunger', 'Purely hypothetical.', 'oxo good grips toilet plunger'],
-    ['Matches, bathroom-grade', 'The candle was not for ambiance. We all knew.', 'bathroom matches odor']
+    ['Squatty Potty', 'Posture correction for an activity that does not occur.', 'squatty potty toilet stool', 'ic-stool'],
+    ['Poo-Pourri Before-You-Go', 'A preemptive apology in a bottle.', 'poo-pourri before you go spray', 'ic-spray'],
+    ['TUSHY Classic bidet', 'Popular with the kind of people who would need it.', 'tushy classic bidet attachment', 'ic-bidet'],
+    ['Everyone Poops, by Taro Gomi', 'The opposing viewpoint. We stock it for balance.', 'everyone poops taro gomi', 'ic-book'],
+    ['Uncle John\u2019s Bathroom Reader', 'Reading material for a room we have never used.', 'uncle johns bathroom reader', 'ic-reader'],
+    ['Motion-activated toilet light', 'For 3 a.m. visits that are none of our business.', 'motion activated toilet night light', 'ic-light'],
+    ['OXO toilet plunger', 'Purely hypothetical.', 'oxo good grips toilet plunger', 'ic-plunger'],
+    ['Matches, bathroom-grade', 'The candle was not for ambiance. We all knew.', 'bathroom matches odor', 'ic-matches']
   ]
 };
 
 const shelfEl = document.querySelector('#shelf');
-SHOP.shelf.forEach(([name, why, query], i) => {
+SHOP.shelf.forEach(([name, why, query, icon], i) => {
   const li = document.createElement('li');
   const a = document.createElement('a');
   a.href = `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${encodeURIComponent(SHOP.amazonTag)}`;
   a.target = '_blank';
   a.rel = 'sponsored nofollow noopener';
-  a.innerHTML = `<span class="no">2.${String(i + 1).padStart(2, '0')}</span><span class="name"></span><span class="go">Amazon ↗</span><span class="why"></span>`;
+  a.innerHTML = `<span class="no">2.${String(i + 1).padStart(2, '0')}</span>`
+    + `<span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#${icon}"></use></svg></span>`
+    + `<span class="name"></span><span class="go">Amazon \u2197</span><span class="why"></span>`;
   a.querySelector('.name').textContent = name;
   a.querySelector('.why').textContent = why;
   li.appendChild(a);
