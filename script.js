@@ -66,6 +66,7 @@ const confessions = [
 let confessionIndex = 0;
 const confession = document.querySelector('#confession-text');
 document.querySelector('#next-confession').addEventListener('click', () => {
+  NP.event('another-excuse', 'Another excuse');
   confession.classList.add('changing');
   setTimeout(() => {
     confessionIndex = (confessionIndex + 1) % confessions.length;
@@ -83,12 +84,20 @@ document.querySelectorAll('.signup').forEach((form) => form.addEventListener('su
     input.focus();
     return;
   }
+  NP.event('email-signup', 'Email signup');
   event.currentTarget.querySelector('button').innerHTML = 'You’re on the list <span>✓</span>';
   note.textContent = 'Your secret is safe. Your hat is not guaranteed.';
   input.disabled = true;
 }));
 
 /* ---------- Gift shop config: edit these ---------- */
+/* ---------- Analytics config: edit these ---------- */
+const NP_ANALYTICS = {
+  // 1. Sign up free at goatcounter.com, pick a site code, then put it here.
+  //    Example: code 'nobodypoops' -> 'https://nobodypoops.goatcounter.com/count'
+  endpoint: 'https://REPLACE.goatcounter.com/count'
+};
+
 const SHOP = {
   amazonTag: 'nobodypoops-20', // Amazon Associates tracking ID
   hats: {
@@ -108,11 +117,48 @@ const SHOP = {
   ]
 };
 
+/* ---------- Analytics: pageviews + click events ---------- */
+const NP = (() => {
+  const live = NP_ANALYTICS.endpoint && !NP_ANALYTICS.endpoint.includes('REPLACE');
+
+  // remember where this visit came from (utm_source), for the whole session
+  let src = 'direct';
+  try {
+    const q = new URLSearchParams(location.search).get('utm_source');
+    if (q) sessionStorage.setItem('np_src', q.toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 24));
+    src = sessionStorage.getItem('np_src') || (document.referrer ? 'referral' : 'direct');
+  } catch (e) { /* private mode: carry on */ }
+
+  if (live) {
+    window.goatcounter = { no_onload: false };
+    const s = document.createElement('script');
+    s.async = true;
+    s.dataset.goatcounter = NP_ANALYTICS.endpoint;
+    s.src = '//gc.zgo.at/count.js';
+    document.head.appendChild(s);
+  }
+
+  const count = (path, title) => {
+    if (!live || !window.goatcounter || !window.goatcounter.count) return;
+    try { window.goatcounter.count({ path, title, event: true }); } catch (e) { /* never block a click */ }
+  };
+
+  return {
+    src,
+    event: (name, label) => count(`${name}--${src}`, label || name),
+    // Amazon SubTag: shows the traffic source inside Amazon's own reports
+    subtag: (slug) => `np-${src}-${slug}`.slice(0, 60)
+  };
+})();
+
 const shelfEl = document.querySelector('#shelf');
 SHOP.shelf.forEach(([name, why, query, icon], i) => {
   const li = document.createElement('li');
   const a = document.createElement('a');
-  a.href = `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${encodeURIComponent(SHOP.amazonTag)}`;
+  const slug = query.split(' ').slice(0, 2).join('-').replace(/[^a-z0-9-]/gi, '');
+  a.href = `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${encodeURIComponent(SHOP.amazonTag)}`
+    + `&ascsubtag=${encodeURIComponent(NP.subtag(slug))}`;
+  a.addEventListener('click', () => NP.event(`amazon-${slug}`, `Amazon: ${name}`));
   a.target = '_blank';
   a.rel = 'sponsored nofollow noopener';
   a.innerHTML = `<span class="no">2.${String(i + 1).padStart(2, '0')}</span>`
@@ -130,6 +176,7 @@ document.querySelectorAll('.hat-card').forEach((card) => {
   const hat = SHOP.hats[card.dataset.hat];
   const button = card.querySelector('.buy-button');
   card.querySelector('.hat-price').textContent = `$${hat.price}`;
+  button.addEventListener('click', () => NP.event(`buy-${card.dataset.hat}`, `Buy: ${card.dataset.hat}`));
   if (hat.checkout.includes('REPLACE_')) {
     button.addEventListener('click', (event) => {
       event.preventDefault();
