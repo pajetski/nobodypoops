@@ -35,9 +35,13 @@ button, input { font: inherit; }
 .eyebrow { position: absolute; top: 112px; left: 3.2vw; margin: 0; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
 .hero h1 { position: absolute; top: 16%; left: 3.2vw; right: 3.2vw; margin: 0; font: 400 clamp(110px, 18vw, 280px)/.71 var(--serif); letter-spacing: -.065em; pointer-events: none; }
 .hero h1 span { display: block; }
+.hero h1 .nobody { color: var(--paper); }
 .hero h1 span:nth-child(2) { text-align: right; font-style: italic; }
-.hero h1 .but-you { text-align: left; font-style: italic; font-size: .34em; letter-spacing: -.03em; margin-top: .58em; color: var(--coral); -webkit-text-stroke: 1px rgba(17,17,15,.9); paint-order: stroke fill; opacity: 0; transform: translateY(14px); animation: but-you 1.1s cubic-bezier(.2,.7,.3,1) 1.4s forwards; }
-@keyframes but-you { to { opacity: 1; transform: none; } }
+.but-you { position: absolute; left: 50%; top: 49.5%; margin: 0; z-index: 5; color: var(--ink);
+  font: italic 400 clamp(34px, 5.6vw, 82px)/1.15 var(--serif); letter-spacing: -.03em; white-space: nowrap;
+  transform: translate(-50%, 12px) rotate(-3.5deg); opacity: 0;
+  animation: but-you 1s cubic-bezier(.2,.7,.3,1) 1.4s forwards; }
+@keyframes but-you { to { opacity: 1; transform: translate(-50%, 0) rotate(-3.5deg); } }
 .hero-note { position: absolute; left: 3.2vw; bottom: 42px; margin: 0; font: 400 clamp(20px, 2vw, 30px)/1.05 var(--serif); }
 .issue { position: absolute; right: 3.2vw; bottom: 42px; text-align: right; margin: 0; font-size: 9px; line-height: 1.5; text-transform: uppercase; }
 .round-link { position: absolute; right: 7vw; top: auto; bottom: 150px; width: 126px; height: 126px; padding: 23px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 50%; background: var(--coral); color: var(--ink); text-decoration: none; text-transform: uppercase; font-size: 10px; transition: transform .3s, background .3s; }
@@ -96,6 +100,8 @@ button, input { font: inherit; }
 .number-row p span { display: inline-block; margin-top: 12px; font: 400 9px/1.5 var(--mono); }
 
 .confessional { min-height: 620px; background: var(--lime); display: flex; flex-direction: column; }
+.confession-body { min-width: 0; }
+.attribution { max-width: 1000px; margin: 0 auto; font: 500 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .12em; text-align: right; }
 .confession-wrap { flex: 1; display: grid; grid-template-columns: 90px 1fr 140px; gap: 25px; align-items: center; }
 .confession-mark { margin: 0; align-self: start; padding-top: 60px; font: 400 180px/1 var(--serif); }
 blockquote { max-width: 1000px; margin: 56px auto 32px; font: italic 400 clamp(46px, 6.3vw, 94px)/.95 var(--serif); letter-spacing: -.035em; transition: opacity .18s, transform .18s; }
@@ -118,11 +124,11 @@ blockquote.changing { opacity: 0; transform: translateY(12px); }
 .input-row button span { font-size: 20px; margin-left: 8px; }
 .form-note { font-size: 8px; margin-top: 14px; }
 
-footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; display: grid; grid-template-columns: 1.5fr .5fr; position: relative; }
+footer { min-height: 340px; background: var(--coral); padding: 60px 3.2vw 56px; display: grid; grid-template-columns: 1.5fr .5fr; position: relative; }
 .footer-logo { align-self: end; font: 400 clamp(120px, 21vw, 315px)/.63 var(--serif); letter-spacing: -.07em; }
 .footer-logo span { font: 400 15px var(--mono); vertical-align: top; letter-spacing: 0; }
 .footer-meta { align-self: end; display: flex; justify-content: space-between; gap: 30px; font-size: 8px; line-height: 1.6; text-transform: uppercase; }
-.back-top { position: absolute; right: 3.2vw; top: 45px; font-size: 9px; text-transform: uppercase; text-decoration: none; }
+.back-top { position: absolute; right: 3.2vw; bottom: 18px; font-size: 9px; text-transform: uppercase; text-decoration: none; }
 
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -138,7 +144,7 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .eyebrow { top: 90px; }
   .hero h1 { top: 15%; font-size: 25vw; line-height: .78; }
   .hero h1 span:nth-child(2) { margin-top: 8px; }
-  .hero h1 .but-you { font-size: .38em; margin-top: .5em; -webkit-text-stroke-width: .8px; }
+    .but-you { top: 50.5%; font-size: 12vw; }
   .round-link { width: 96px; height: 96px; right: 5vw; top: auto; bottom: 86px; padding: 16px; }
   .issue { display: none; }
   .manifesto, .field-notes, .numbers, .confessional, .membership { padding: 44px 5vw 52px; }
@@ -146,7 +152,7 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .statement { margin: 44px 0; font-size: 21vw; }
   .manifesto-grid, .membership { grid-template-columns: 1fr; gap: 40px; }
   .section-intro { display: block; margin: 36px 0 30px; }
-  .section-intro h2, .membership h2 { font-size: 22vw; }
+  .section-intro h2, .membership h2 { font-size: 16vw; }
   .section-intro > p { margin: 20px 0 0; }
   .note-grid { grid-template-columns: 1fr; }
   .note-card { min-height: 360px; border-right: 0; border-bottom: 1px solid var(--ink); }
@@ -156,13 +162,14 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .confessional { min-height: 480px; }
   .confession-wrap { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
   .confession-mark { display: none; }
-  blockquote { margin: 40px 0 20px; font-size: 13vw; }
+  blockquote { margin: 40px 0 16px; font-size: 13vw; }
+  .attribution { text-align: left; font-size: 10px; }
   .spin-button { align-self: flex-end; }
   .signup label { margin-bottom: 16px; }
   .input-row { display: block; }
   .input-row input { width: 100%; }
   .input-row button { padding: 18px 0; }
-  footer { grid-template-columns: 1fr; min-height: 300px; }
+  footer { grid-template-columns: 1fr; min-height: 300px; padding-bottom: 52px; }
   .footer-logo { font-size: 27vw; }
   .footer-meta { gap: 10px; }
 }
@@ -199,7 +206,7 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
 .buy-button:hover span { transform: translateX(6px); }
 .buy-button:focus-visible, .shelf a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-.shelf-wrap { margin-top: 76px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; align-items: start; }
+.shelf-wrap { scroll-margin-top: 90px; margin-top: 76px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; align-items: start; }
 .shelf-head { position: sticky; top: 40px; }
 .shelf-head .mini-label { margin-bottom: 22px; }
 .occupied { font-weight: 400; display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border: 1px solid var(--ink); border-radius: 999px; }
@@ -255,3 +262,18 @@ footer { min-height: 380px; background: var(--coral); padding: 60px 3.2vw 35px; 
   .help-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; align-items: start; }
   .help-button { flex: 1 1 140px; justify-content: center; }
 }
+
+/* footer email capture */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.footer-capture { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr minmax(280px, 440px); gap: 5vw; align-items: end; border-bottom: 1px solid var(--ink); padding-bottom: 22px; margin-bottom: 34px; }
+.footer-capture > p { margin: 0; max-width: 480px; font: 400 clamp(20px, 2.1vw, 32px)/1.1 var(--serif); }
+.footer-form .input-row { border-bottom: 1px solid var(--ink); }
+.footer-form .form-note { margin-top: 10px; text-transform: none; }
+@media (max-width: 800px) {
+  .footer-capture { grid-template-columns: 1fr; gap: 20px; padding-bottom: 18px; margin-bottom: 26px; }
+  .footer-capture > p { font-size: 22px; }
+}
+
+/* Aisle 2 artwork */
+.shelf-art { display: block; width: 100%; max-width: 440px; height: auto; margin: 34px 0 0 -8px; }
+@media (max-width: 760px) { .shelf-art { max-width: 340px; margin: 24px auto 0; } }

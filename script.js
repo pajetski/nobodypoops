@@ -54,11 +54,14 @@ const countObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
 
 const confessions = [
-  'I once blamed the sound on a neighbor moving furniture. I was in a hotel.',
-  'I ran the hand dryer for four consecutive minutes. There was no one else in the building.',
-  'I have a playlist called “Conference Call.” It has saved my life twice.',
-  'I said I was checking on the dog. I do not own a dog.',
-  'The candle wasn’t for ambiance. We all knew. Nobody said anything.'
+  'Rebalancing the shower head. It had drifted four degrees off true.',
+  'Fixing the Fitzer valve under the sink. Common issue. Very technical.',
+  'Checking the water pressure. Thirty-one minutes of checking.',
+  'Reading the full ingredient list on the shampoo. Both bottles.',
+  'Testing the exhaust fan. It passed, eventually.',
+  'Rotating the towels. They rotate seasonally.',
+  'Letting the grout cure. You cannot rush grout.',
+  'Taking a call they could not take in front of us.'
 ];
 let confessionIndex = 0;
 const confession = document.querySelector('#confession-text');
@@ -71,7 +74,7 @@ document.querySelector('#next-confession').addEventListener('click', () => {
   }, 180);
 });
 
-document.querySelector('.signup').addEventListener('submit', (event) => {
+document.querySelectorAll('.signup').forEach((form) => form.addEventListener('submit', (event) => {
   event.preventDefault();
   const input = event.currentTarget.querySelector('input');
   const note = event.currentTarget.querySelector('.form-note');
@@ -81,9 +84,9 @@ document.querySelector('.signup').addEventListener('submit', (event) => {
     return;
   }
   event.currentTarget.querySelector('button').innerHTML = 'You’re on the list <span>✓</span>';
-  note.textContent = 'Your secret is safe with us.';
+  note.textContent = 'Your secret is safe. Your hat is not guaranteed.';
   input.disabled = true;
-});
+}));
 
 /* ---------- Gift shop config: edit these ---------- */
 const SHOP = {
